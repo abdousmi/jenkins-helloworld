@@ -1,11 +1,25 @@
-node{
-    stage('Clone') {
-        git url: 'https://github.com/abdousmi/jenkins-helloworld.git'
+pipeline {
+    agent {
+        docker {
+            image 'node:6-alpine'
+            args '-p 3000:3000 -p 5000:5000'
+        }
     }
-    stage('Build') {
-        sh 'javac Main.java'    
+    environment {
+        CI = 'true'
     }
-    stage('Run') {
-        sh 'java Main'
+    stages {
+        stage('Build') {
+            echo "Build";
+        }
+        stage('Test') {
+            echo "Test";
+        }
+        stage('Run') {
+            echo "Run";
+        }
+        stage('Deploy') {
+            echo "Deploy";
+        }
     }
 }
