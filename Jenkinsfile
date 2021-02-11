@@ -3,10 +3,10 @@ node{
         git url: 'https://github.com/abdousmi/jenkins-helloworld.git'
     }
     stage('Build') {
-        sh 'javac Main.java'    
+        echo 'Build';    
     }
     stage('Run') {
-        sh 'java Main'
+        echo 'Run';
     }
     stage('Test') {
 		echo 'Test';
